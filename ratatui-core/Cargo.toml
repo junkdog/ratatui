@@ -32,6 +32,7 @@ std = [
   "compact_str/std",
   "unicode-truncate/std",
   "strum/std",
+  "critical-section?/std",
 ]
 
 ## enables layout cache
