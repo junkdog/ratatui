@@ -32,10 +32,10 @@ std = [
   "compact_str/std",
   "unicode-truncate/std",
   "strum/std",
-  "critical-section?/std",
 ]
 
-## enables layout cache
+## enables layout cache; uses thread_local when std is available,
+## critical-section::Mutex otherwise (for no_std/embedded targets).
 layout-cache = ["dep:critical-section"]
 
 ## enables conversions to / from colors, modifiers, and styles in the ['anstyle'] crate
