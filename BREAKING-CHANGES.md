@@ -12,6 +12,7 @@ This is a quick summary of the sections below:
 
 - [v0.31.0](#v0310)
   - MSRV is now 1.88.0
+  - `layout-cache` is now enabled by default in `ratatui-core`
 - [v0.30.1](#v0301)
   - Adding `AsRef` impls for widgets may affect type inference in rare cases
 - [v0.30.0](#v0300)
@@ -102,6 +103,18 @@ This is a quick summary of the sections below:
 ### MSRV is now 1.88.0
 
 The minimum supported Rust version (MSRV) is now 1.88.0.
+
+### `layout-cache` is now enabled by default in `ratatui-core` ([#2399])
+
+[#2399]: https://github.com/ratatui/ratatui/pull/2399
+
+The `layout-cache` feature is now enabled by default in `ratatui-core`. This reverses the v0.30.0
+change that made it opt-in ([#1795]). Since `layout-cache` now supports `no_std` environments via
+`critical-section`, it is safe to enable by default for all targets.
+
+Libraries that depend directly on `ratatui-core` will now have `critical-section` as a transitive
+dependency. Applications using the main `ratatui` crate are unaffected, as `layout-cache` was
+already enabled by default there.
 
 ## [v0.30.1](https://github.com/ratatui/ratatui/releases/tag/ratatui-v0.30.1)
 
